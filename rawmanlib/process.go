@@ -53,7 +53,7 @@ func (r *rawMan) processFile(inFilename string) error {
 		// 	return errors.New(fmt.Sprintf("file '%s' is locked at the moment by another conversion... will retry later", outFilename))
 		// }
 		// defer unlockFile(outFilename)
-		err = EnsureDirPathExists(outFilename, GetDirPermissions(r.OutputDirMode))
+		err = ensureDirPathExists(outFilename, getDirPermissions(r.OutputDirMode))
 		if err != nil {
 			return err
 		}
@@ -77,7 +77,7 @@ func (r *rawMan) processFile(inFilename string) error {
 
 		// only change permissions if we create the output file... if the file is already there, leave permissions untouched
 		if foExists == false {
-			if err = os.Chmod(outFilename, GetFilePermissions(r.OutputFileMode)); err != nil {
+			if err = os.Chmod(outFilename, getFilePermissions(r.OutputFileMode)); err != nil {
 				log.Println("processing: chmod failed: ", err.Error())
 			}
 		}

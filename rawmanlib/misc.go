@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func IsDir(path string) (bool, error) {
+func isDir(path string) (bool, error) {
 	fi, err := os.Stat(path)
 	if err != nil {
 		return false, err
@@ -21,11 +21,11 @@ func IsDir(path string) (bool, error) {
 	return false, nil
 }
 
-func GetDirPermissions(permstr string) os.FileMode {
+func getDirPermissions(permstr string) os.FileMode {
 	return getPermissions(permstr, os.FileMode(0775))
 }
 
-func GetFilePermissions(permstr string) os.FileMode {
+func getFilePermissions(permstr string) os.FileMode {
 	return getPermissions(permstr, os.FileMode(0664))
 }
 
@@ -94,7 +94,7 @@ func removeDirIfEmpty(outpath string, stopPath string) error {
 }
 
 // accepts the complete filepath
-func EnsureDirPathExists(outpath string, perm os.FileMode) error {
+func ensureDirPathExists(outpath string, perm os.FileMode) error {
 	var path string = filepath.Dir(outpath)
 
 	fi, err := os.Stat(path)

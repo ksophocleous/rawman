@@ -202,7 +202,7 @@ func (r *rawMan) Loop() error {
 		select {
 		case ev := <-r.watcher.Event:
 			// watch new directories and unwatch deleted ones
-			if dir, err := IsDir(ev.Name); err == nil && dir {
+			if dir, err := isDir(ev.Name); err == nil && dir {
 				if ev.IsDelete() {
 					r.watcher.RemoveWatch(ev.Name)
 				} else if ev.IsCreate() {
