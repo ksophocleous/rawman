@@ -1,0 +1,7 @@
+InputPath = "/media/pictures/dngs"
+InputExt = ".dng"
+OutputPath = "/media/pictures/jpgs"
+OutputExt = ".jpg"
+OutputFileMode = "0644"
+OutputDirMode = "0755"
+HysteresisUpdateTimeMs = 500
